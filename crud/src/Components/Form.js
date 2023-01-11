@@ -12,36 +12,23 @@ function Form() {
   //   setState(state.concat(content));
   // };
 
-	const loadNotes = () => { // загрузка 
-    fetch(`${process.env.REACT_APP_API_URL}`, {
-      method: 'GET',
-      headers: {'Content-Type': 'application/json;charset=utf-8'}
-    })
-    .then(response => response.json()) 
-    .then(arr => setState(state.concat(arr)))
-  }
+	// const loadNotes = () => { 
+  //   fetch(`${process.env.REACT_APP_API_URL}`, {
+  //     method: 'GET',
+  //     headers: {'Content-Type': 'application/json;charset=utf-8'}
+  //   })
+  //   .then(response => response.json()) 
+  //   .then(arr => setState(state.concat(arr)))
+  // }
 
 	const addNote = (content) => {
-		// fetch(`${process.env.REACT_APP_API_URL}`, {
-    //   method: 'POST',
-    //   body: new FormData(content)
-    // })
-    // .then(response => console.log(response.json())) 
 		axios.post(`${process.env.REACT_APP_API_URL}`, content)
-		.then(function (response) {
-			console.log(response);
-		})
-		.catch(function (error) {
-			console.log(error);
-		});
-
-		loadNotes();
+		.then(response => response.json())
+		.catch(error => console.log(error));
 	}
 
-	
-	
-	const loadActualNotes = () => { // обновление
-    fetch(`${process.env.REACT_APP_API_URL}`)
+	const loadNotes = () => { // обновление
+    axios.get(`${process.env.REACT_APP_API_URL}`)
     .then(response => response.json()) 
     .then(arr => setState(state.concat(arr)))
   }
@@ -50,9 +37,9 @@ function Form() {
     loadNotes();
   }, []);//componentDidMount
 
-	useEffect(() => {
-	console.log('hi');
-	}, [state]) //componentDidUpdate
+	// useEffect(() => {
+	// console.log('hi');
+	// }, [state]) //componentDidUpdate
 
   return (
     <div className="center">
