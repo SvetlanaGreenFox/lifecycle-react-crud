@@ -1,21 +1,20 @@
-import React, { useState } from 'react';
-import _ from 'lodash';
+import React, { useState } from "react";
+// import _ from 'lodash';
 
 function AddNote({ sendNote }) {
-  const [state, setState] = useState({ content: '', id: null });
+  const [state, setState] = useState({ content: "" });
 
   const handleChange = (e) => {
-    const key = _.uniqueId();
-		console.log(key);
     const { value } = e.target;
-    setState({ ...state, content: value, id: key });
+    setState({ ...state, content: value });
   };
 
   function addNote(e) {
     e.preventDefault();
-
-    sendNote(state);
-    setState({ ...state, content: '', id: null });
+    if (state.content.length > 0) {
+      sendNote(state);
+      setState({ ...state, content: "" });
+    }
   }
 
   return (
