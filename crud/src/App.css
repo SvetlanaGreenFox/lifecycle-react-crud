@@ -119,10 +119,13 @@ textarea:focus {
 }
 
 button {
-  padding: 0;
   border: none;
   font: inherit;
   color: inherit;
   background-color: transparent;
   cursor: pointer;
+}
+
+.btn__reload{
+	padding: 8 8 8 15
 }

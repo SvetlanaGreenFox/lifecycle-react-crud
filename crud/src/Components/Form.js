@@ -17,13 +17,11 @@ class Form extends React.Component {
   }
 
   loadNotes = async () => {
-    console.log("ho");
     const response = await axios.get(`${process.env.REACT_APP_API_URL}`);
     this.setState({ notes: response.data });
   };
 
   addNote = async ({ content }) => {
-    console.log(content);
     const responce = await axios.post(`${process.env.REACT_APP_API_URL}`, {
       content: content,
     });
