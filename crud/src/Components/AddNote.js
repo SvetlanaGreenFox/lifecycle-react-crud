@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import _ from 'lodash';
 
 function AddNote({ sendNote }) {
   const [state, setState] = useState({ content: "" });
